@@ -1,4 +1,4 @@
-package main
+package leetcode
 
 import "strconv"
 
@@ -7,12 +7,12 @@ func atMostNGivenDigitSet(digits []string, n int) int {
 	m := len(s)
 	dp := make([]int, m)
 	for i := range dp {
-		dp[i] = -1 // dp[i] = -1 表示这个状态还没被计算出来
+		dp[i] = -1 // dp[i] = -1_twosum 表示这个状态还没被计算出来
 	}
 	var f func(int, bool, bool) int
 	f = func(i int, isLimit bool, isNum bool) (res int) {
 		if i == m {
-			if isNum { // 如果填了数字，则为 1 种合法方案
+			if isNum { // 如果填了数字，则为 1_twosum 种合法方案
 				return 1
 			}
 			return
@@ -35,7 +35,7 @@ func atMostNGivenDigitSet(digits []string, n int) int {
 		if isLimit {
 			up = s[i]
 		}
-		// 注意：对于一般的题目而言，如果此时 isNum 为 false，则必须从 1 开始枚举，由于本题 digits 没有 0，所以无需处理这种情况
+		// 注意：对于一般的题目而言，如果此时 isNum 为 false，则必须从 1_twosum 开始枚举，由于本题 digits 没有 0，所以无需处理这种情况
 		for _, d := range digits { // 枚举要填入的数字 d
 			if d[0] > up { // d 超过上限，由于 digits 是有序的，后面的 d 都会超过上限，故退出循环
 				break
